@@ -35,11 +35,12 @@ public class ProductService {
 
     // Delete a product by ID
     public void deleteProduct(Long id) {
+
         productRepository.deleteById(id);
     }
 
     // Business logic: Apply a discount to products with price > 1000
-    private void applyDiscount(Product product) {
+    private void applyDiscount(Product product) {                                 //check price
         if (product.getPrice() > 1000) {
             product.setPrice(product.getPrice() * 0.9); // 10% discount
         }
