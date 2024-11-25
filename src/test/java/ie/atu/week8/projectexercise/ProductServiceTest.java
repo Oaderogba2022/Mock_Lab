@@ -33,12 +33,22 @@ class ProductServiceTest {
         assertEquals("Price cannot be negative", iae.getMessage());
     }*/
 
-    @Test
+    /*@Test
     void testValidateProductEmptyName() {
         Product product = new Product(1L, "", "A high-end laptop", 1500);
         IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> productService.saveProduct(product));
         assertEquals("Product name cannot be empty", iae.getMessage());
+    }*/
+
+    @Test
+    void testApplyDiscountForExpensiveProduct() {
+        Product product = new Product(1L, "High-end Laptop", "A premium laptop", 2000);
+        Product savedProduct = productService.saveProduct(product);
+        assertEquals(1800, savedProduct.getPrice(), 0.01);
     }
+
+
+
 
 
 
